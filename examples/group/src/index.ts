@@ -1,11 +1,12 @@
 import { run, HandlerContext, CommandHandlers } from "@xmtp/message-kit";
 import { commands } from "./commands.js";
-import { handler as bet } from "./handler/betting.js";
+import { handler as bet } from "./handler/bet.js";
 import { handler as tipping } from "./handler/tipping.js";
 import { handler as agent } from "./handler/agent.js";
 import { handler as transaction } from "./handler/transaction.js";
 import { handler as splitpayment } from "./handler/payment.js";
 import { handler as games } from "./handler/game.js";
+import { handler as matches } from "./handler/match.js";
 import { handler as admin } from "./handler/admin.js";
 import { handler as loyalty } from "./handler/loyalty.js";
 
@@ -21,6 +22,7 @@ const commandHandlers: CommandHandlers = {
   "/points": loyalty,
   "/leaderboard": loyalty,
   "/game": games,
+  "/match": matches,
   "/add": admin,
   "/remove": admin,
   "/name": admin,

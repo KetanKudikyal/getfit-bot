@@ -91,28 +91,42 @@ export const commands: CommandGroup[] = [
   {
     name: "Betting",
     icon: "🎰",
-    description: "Create bets with friends.",
+    description: "Create bets on matchers.",
     commands: [
       {
-        command: "/bet @users [name] [amount] [token]",
+        command: "/bet [player] [amount] [token]",
         description: "Bet on basebet.",
         params: {
-          username: {
+          player: {
             default: "",
-            type: "username",
-          },
-          name: {
-            default: "",
-            type: "quoted",
+            type: "string",
           },
           amount: {
-            default: 10,
+            default: 15,
             type: "number",
           },
           token: {
-            default: "eth",
+            default: "usdc",
             type: "string",
-            values: ["eth", "dai", "usdc", "degen"],
+            values: ["usdc"],
+          },
+        },
+      },
+    ],
+  },
+  {
+    name: "Matches",
+    icon: "🕹️",
+    description: "Bet on matches.",
+    commands: [
+      {
+        command: "/match [match]",
+        description: "Bet on a match.",
+        params: {
+          match: {
+            default: "",
+            type: "string",
+            values: ["goggin_elixir", "help"],
           },
         },
       },
