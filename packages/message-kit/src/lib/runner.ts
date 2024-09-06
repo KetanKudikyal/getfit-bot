@@ -1,13 +1,8 @@
-import { default as HandlerContext } from "./handlerContext.js";
-import { default as xmtpClient } from "./client.js";
+import { Client } from "@xmtp/mls-client";
+import { Client as ClientV2 } from "@xmtp/xmtp-js";
 import { Config, Handler } from "../helpers/types.js";
-import { Conversation, DecodedMessage, Client } from "@xmtp/mls-client";
-import {
-  DecodedMessage as DecodedMessageV2,
-  Client as ClientV2,
-  Conversation as ConversationV2,
-} from "@xmtp/xmtp-js";
-import { send } from "process";
+import { default as xmtpClient } from "./client.js";
+import { default as HandlerContext } from "./handlerContext.js";
 
 export default async function run(handler: Handler, config?: Config) {
   const { client, v2client } = await xmtpClient(config?.client);
@@ -45,6 +40,7 @@ export default async function run(handler: Handler, config?: Config) {
         ) {
           return;
         }
+        console.log("message", message);
 
         if (process?.env?.MSG_LOG) {
           console.log(`incoming_${version}:`, message.content);

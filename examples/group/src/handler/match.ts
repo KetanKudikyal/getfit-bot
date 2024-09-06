@@ -23,13 +23,13 @@ export async function handler(context: HandlerContext) {
   switch (match) {
     case "goggin_elixir":
       const matchDescription = matchDescriptions[match];
-      context.reply(matchDescription);
+      context.send(matchDescription);
       break;
     case "help":
-      context.reply("Available matches: \n/match goggin_elixir");
+      context.send("Available matches: \n/match goggin_elixir");
       break;
     default:
-      context.reply(
+      context.send(
         "Command not recognized. Available matches: goggin_elixir, or help.",
       );
   }

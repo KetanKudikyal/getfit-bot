@@ -1,19 +1,19 @@
-import { run, HandlerContext, CommandHandlers } from "@xmtp/message-kit";
+import { CommandHandlers, HandlerContext, run } from "@xmtp/message-kit";
 import { commands } from "./commands.js";
-import { handler as bet } from "./handler/bet.js";
-import { handler as tipping } from "./handler/tipping.js";
-import { handler as agent } from "./handler/agent.js";
-import { handler as transaction } from "./handler/transaction.js";
-import { handler as splitpayment } from "./handler/payment.js";
-import { handler as games } from "./handler/game.js";
-import { handler as matches } from "./handler/match.js";
 import { handler as admin } from "./handler/admin.js";
+import { handler as agent } from "./handler/agent.js";
+import { handler as bet } from "./handler/bet.js";
+import { handler as games } from "./handler/game.js";
 import { handler as loyalty } from "./handler/loyalty.js";
+import { handler as matches } from "./handler/match.js";
+import { handler as splitpayment } from "./handler/payment.js";
+import { handler as tipping } from "./handler/tipping.js";
+import { handler as transaction } from "./handler/transaction.js";
 
 // Define command handlers
 const commandHandlers: CommandHandlers = {
-  "/tip": tipping,
   "/agent": agent,
+  "/tip": tipping,
   "/bet": bet,
   "/send": transaction,
   "/swap": transaction,
@@ -47,7 +47,7 @@ const commandHandlers: CommandHandlers = {
       "- 🪨 mintframe - 0xB7d51dD8331551D2FA0d185F8Ba08DcCd71499aD : Turn a Zora url into a mint frame.\n\n\n" +
       "To learn how to build your own app, visit MessageKit: https://message-kit.vercel.app/\n\n" +
       "To publish your app, visit Directory: https://message-kit.vercel.app/directory\n\n" +
-      "You are currently inside Message Kit Group Starter. You can type:\n/help command to see available commands\n/apps to trigger the directory.";
+      "You are currently ixnside Message Kit Group Starter. You can type:\n/help command to see available commands\n/apps to trigger the directory.";
 
     context.reply(intro);
   },
@@ -123,9 +123,5 @@ async function handleTextMessage(context: HandlerContext) {
   const {
     content: { content: text },
   } = context.message;
-  if (text.includes("@bot")) {
-    await agent(context);
-  } else if (text.startsWith("/")) {
-    await context.intent(text);
-  }
+  await agent(context);
 }

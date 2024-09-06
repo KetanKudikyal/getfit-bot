@@ -14,23 +14,28 @@ export async function handler(context: HandlerContext) {
   console.log(player, amount, token);
 
   if (!player || !amount || !token) {
-    context.reply(
+    context.send(
       "Missing required parameters. Please provide player, amount, and token.",
     );
     return;
   }
 
-  if (amount < 15) {
-    context.reply("Amount must be greater than 15.");
-    return;
-  }
+  // if (amount < 15) {
+  //   context.send("Amount must be greater than 15.");
+  //   return;
+  // }
+
+  const playerMap = {
+    floyd: "john",
+    conor: "john",
+  };
 
   if (token !== "usdc") {
-    context.reply("Token must be usdc.");
+    context.send("Token must be usdc.");
     return;
   }
-
-  await context.reply(
-    `Bet created!. Go to the frame: https://get-fit-frontend.vercel.app/frame`,
+  await context.send(`Bet created! Go to the frame`);
+  await context.send(
+    `https://get-fit-frontend.vercel.app/frame?amount=${amount}&player=${playerMap[player as keyof typeof playerMap].toLowerCase()}`,
   );
 }

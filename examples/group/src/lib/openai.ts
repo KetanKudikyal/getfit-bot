@@ -67,3 +67,10 @@ export async function vision(imageData: Uint8Array, systemPrompt: string) {
     throw error;
   }
 }
+
+// general info about the match
+// player statistics
+// You will be asked to a prediction about the match
+// odds in percentage
+// place a bet on mac gregor ( ask for amount and token ) and suggest a safe bet which is 10 15 usdc
+// after this generate a command reply to the user with the bet amount and token

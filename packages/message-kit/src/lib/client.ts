@@ -1,15 +1,15 @@
-import { ReplyCodec } from "@xmtp/content-type-reply";
-import { Client as V2Client } from "@xmtp/xmtp-js";
 import { ReactionCodec } from "@xmtp/content-type-reaction";
-import { Client, ClientOptions, XmtpEnv } from "@xmtp/mls-client";
-import { Wallet } from "ethers";
-import { TextCodec } from "@xmtp/content-type-text";
 import {
   AttachmentCodec,
   RemoteAttachmentCodec,
 } from "@xmtp/content-type-remote-attachment";
+import { ReplyCodec } from "@xmtp/content-type-reply";
+import { TextCodec } from "@xmtp/content-type-text";
+import { Client, ClientOptions, XmtpEnv } from "@xmtp/mls-client";
+import { Client as V2Client } from "@xmtp/xmtp-js";
+import { Wallet } from "ethers";
 import * as fs from "fs";
-import { createWalletClient, http, toBytes, isHex } from "viem";
+import { createWalletClient, http, isHex, toBytes } from "viem";
 import { generatePrivateKey, privateKeyToAccount } from "viem/accounts";
 import { mainnet } from "viem/chains";
 
@@ -17,7 +17,7 @@ export default async function xmtpClient(
   clientConfig: ClientOptions = {},
   privateKey: string | null = null,
 ): Promise<{ client: Client; v2client: V2Client }> {
-  let key = privateKey ?? process.env.KEY;
+  let key = process.env.KEY;
   if (!key || !isHex(key)) {
     key = generatePrivateKey();
     console.error(
