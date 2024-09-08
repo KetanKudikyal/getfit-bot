@@ -98,9 +98,9 @@ export const commands: CommandGroup[] = [
         description: "Bet on basebet.",
         params: {
           player: {
-            default: "goggin",
+            default: "conor",
             type: "string",
-            values: ["goggin", "elixir"],
+            values: ["conor", "floyd"],
           },
           amount: {
             default: 15,
@@ -127,7 +127,7 @@ export const commands: CommandGroup[] = [
           match: {
             default: "",
             type: "string",
-            values: ["goggin_elixir", "help"],
+            values: ["conor_floyd", "help"],
           },
         },
       },

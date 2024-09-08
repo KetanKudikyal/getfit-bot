@@ -26,8 +26,8 @@ export async function handler(context: HandlerContext) {
   // }
 
   const playerMap = {
-    floyd: "john",
-    conor: "john",
+    floyd: "floyd",
+    conor: "conor",
   };
 
   if (token !== "usdc") {

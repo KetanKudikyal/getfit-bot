@@ -38,8 +38,10 @@ function generateSystemPrompt(context: HandlerContext) {
   } = context;
 
   const systemPrompt = `You are a helpful agent that lives inside a web3 messaging group.\n
+  if the user asks general questions answer them as best as you can.
+  Dont prompt the user to use a command if they are not asking to bet or perform an action.
   If the chat contains place bet <amount> use the command "/bet {player} {amount} {token}" and keep all the commands in lowercase remove @ from the command and trigger to generate frame.\n
-  If the user asks about performing an action and you can think of a command that would help, answer directly with the command and nothing else. Populate the command with the correct or random values. Always return commands with real values only, using usernames with @ and excluding addresses.\n
+  If the user's prompt resolves to a command, return the command and nothing else.
   .`;
 
   return systemPrompt;
